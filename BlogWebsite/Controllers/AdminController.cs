@@ -1,5 +1,4 @@
-﻿//using BlogWebsite.Core.DbContexts;
-using BlogWebsite.Contexts;
+﻿using BlogWebsite.Contexts.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,7 +16,7 @@ namespace BlogWebsite.Controllers
         }
         public IActionResult Login()
         {
-            ViewBag.DbTest = blogContext.Posts.Select(p => p.Description).FirstOrDefault();
+            ViewBag.DbTest = blogContext.Tags.Select(p => p.Name).FirstOrDefault();
             return View();
         }
     }

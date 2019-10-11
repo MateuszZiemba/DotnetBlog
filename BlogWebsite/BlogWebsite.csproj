@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BlogWebsite.Contexts\BlogWebsite.Contexts.csproj" />
     <ProjectReference Include="..\BlogWebsite.Core\BlogWebsite.Core.csproj" />
   </ItemGroup>
 

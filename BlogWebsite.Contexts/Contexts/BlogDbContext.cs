@@ -2,10 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace BlogWebsite.Contexts
+namespace BlogWebsite.Contexts.Contexts
 {
     public class BlogDBContext : DbContext
     {
