@@ -27,7 +27,6 @@ namespace BlogWebsite
         {
             services.AddControllersWithViews();
             services.AddScoped<BlogDBContext>(b => new BlogDBContext(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddScoped<IBlogRepository>(b => new BlogRepository());
             services.AddScoped<IBlogRepository, BlogRepository>();
         }
 
@@ -57,11 +56,13 @@ namespace BlogWebsite
                 //    name: "default",
                 //    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Admin}/{action=Login}/{id?}");
+                name: "default_blog",
+                pattern: "{controller=Blog}/{action=Home}/{id?}");
+
                 endpoints.MapControllerRoute(
-                    name: "default_blog",
-                    pattern: "{controller=Blog}/{action=Posts}/{id?}");
+                name: "default",
+                pattern: "{controller=Admin}/{action=Login}/{id?}");
+
             });
         }
     }
