@@ -18,10 +18,15 @@ namespace BlogWebsite.Controllers
             this.blogRepository = blogRepository;
         }
 
+        public IActionResult List()
+        {
+            return View();
+        }
+
         public IActionResult Posts(int p = 1)
         {
             var posts = new ListViewModel(blogRepository, p);
-            return View();
+            return View(posts);
         }
 
         public IActionResult Category(string category, int p = 1)
@@ -50,9 +55,13 @@ namespace BlogWebsite.Controllers
         //    return View("List", listViewModel);
         //}
 
-        public ViewResult Post(int year, int month, string title)
+        //public ViewResult Post(int year, int month, string title)
+        public ViewResult Post()
         {
-            var post = blogRepository.GetPost(year, month, title);
+            //TODO test
+            //var post = blogRepository.GetPost(year, month, title);
+            var post = blogRepository.GetPost(2019, 10, "first");
+
             //if (post == null)
             //    throw new HttpException(404, "Post not found");
 
@@ -67,5 +76,10 @@ namespace BlogWebsite.Controllers
         //    var widgetViewModel = new WidgetViewModel(blogRepository);
         //    return PartialView("_Sidebars", widgetViewModel);
         //}
+
+        public ViewResult Home()
+        {
+            return View();
+        }
     }
 }

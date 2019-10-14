@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogWebsite.Core.Contexts;
+using BlogWebsite.Core.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,8 @@ namespace BlogWebsite
         {
             services.AddControllersWithViews();
             services.AddScoped<BlogDBContext>(b => new BlogDBContext(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddScoped<IBlogRepository>(b => new BlogRepository());
+            services.AddScoped<IBlogRepository, BlogRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +59,9 @@ namespace BlogWebsite
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Admin}/{action=Login}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default_blog",
+                    pattern: "{controller=Blog}/{action=Posts}/{id?}");
             });
         }
     }

@@ -1,0 +1,13 @@
+﻿@model BlogWebsite.Core.BusinessObjects.Post
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="~/css/blog.css" rel="stylesheet" />
+</head>
+<div class="blog-post">
+    <h2 class="blog-post-title">@Model.Title</h2>
+    <p class="blog-post-meta">@Model.PublishedOn @*by <a href="#">Mark</a>TODO add author and users*@</p>
+
+    <p>
+        @Model.Description
+    </p>
