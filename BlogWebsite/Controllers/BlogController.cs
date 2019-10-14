@@ -55,12 +55,10 @@ namespace BlogWebsite.Controllers
         //    return View("List", listViewModel);
         //}
 
-        //public ViewResult Post(int year, int month, string title)
-        public ViewResult Post()
+        public ViewResult Post(int year, int month, string title)
         {
-            //TODO test
-            //var post = blogRepository.GetPost(year, month, title);
-            var post = blogRepository.GetPost(2019, 10, "first");
+            var post = blogRepository.GetPost(year, month, title);
+            //var post = blogRepository.GetPost(2019, 10, "first");
 
             //if (post == null)
             //    throw new HttpException(404, "Post not found");
@@ -69,13 +67,6 @@ namespace BlogWebsite.Controllers
             //    throw new HttpException(401, "The post is not published");
             return View(post);
         }
-
-        //[ChildActionOnly]
-        //public PartialViewResult Sidebars()
-        //{
-        //    var widgetViewModel = new WidgetViewModel(blogRepository);
-        //    return PartialView("_Sidebars", widgetViewModel);
-        //}
 
         public ViewResult Home()
         {
