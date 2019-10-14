@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Text;
 
-namespace BlogWebsite.Contexts.Contexts
+namespace BlogWebsite.Core.Contexts
 {
     public class BlogDBContext : DbContext
     {

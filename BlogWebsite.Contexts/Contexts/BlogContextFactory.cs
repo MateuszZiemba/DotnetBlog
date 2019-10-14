@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BlogWebsite.Core.Contexts;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Text;
 
-namespace BlogWebsite.Contexts.Contexts
+namespace BlogWebsite.Core.Contexts
 {
     public class BlogContextFactory : IDbContextFactory<BlogDBContext>
     {
