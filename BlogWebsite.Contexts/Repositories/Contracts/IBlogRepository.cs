@@ -1,4 +1,5 @@
 ﻿using BlogWebsite.Core.BusinessObjects;
+using BlogWebsite.Core.POCOs;
 using System.Collections.Generic;
 
 namespace BlogWebsite.Core.Repositories
@@ -18,5 +19,7 @@ namespace BlogWebsite.Core.Repositories
         Post GetPost(int year, int month, string postSlug);
         IList<Category> GetAllCategories();
         IList<Tag> GetAllTags();
+        IList<SocialMedia> GetAllSocialMedias();
+        IList<string> GetArchiveCategories();
     }
 }

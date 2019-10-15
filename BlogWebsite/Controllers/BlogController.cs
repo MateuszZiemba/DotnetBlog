@@ -11,6 +11,7 @@ namespace BlogWebsite.Controllers
 {
     public class BlogController : Controller
     {
+        //todo read: https://code-maze.com/net-core-web-development-part4/
         private IBlogRepository blogRepository;
 
         public BlogController(IBlogRepository blogRepository)
