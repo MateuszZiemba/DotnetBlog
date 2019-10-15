@@ -14,8 +14,23 @@
            asp-route-title="@Model.Slug">@Model.Title</a>
     </h2>
 
+    <div class="row">
+        <p class="blog-post-meta">@Model.PublishedOn @*by <a href="#">Mark</a>TODO add author and users*@</p>
+        <div class="post-category">
+            <span> Category: <a asp-action="category"
+                             asp-controller="blog"
+                             asp-route-category="@Model.Category.Slug">@Model.Category.Name</a>
+                        </span>
+                    </div>
+        </div>
 
-    <p class="blog-post-meta">@Model.PublishedOn @*by <a href="#">Mark</a>TODO add author and users*@</p>
+    @*<div class="post-tags">
+        <span>Tags: <a asp-action="tag"
+                       asp-controller="blog"
+                       asp-route-year="@Model.Tags.">@Model.Title</a>
+        </span>*@
+
+    </div>
 
     <p>
         @Model.Description

@@ -10,4 +10,10 @@
     <PackageReference Include="EntityFramework" Version="6.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="Migrations\201910150924009_SocialMedia.resx">
+      <DependentUpon>201910150924009_SocialMedia.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

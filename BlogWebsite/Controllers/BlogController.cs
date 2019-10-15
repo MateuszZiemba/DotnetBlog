@@ -36,7 +36,7 @@ namespace BlogWebsite.Controllers
             return View();
         }
 
-        public ViewResult Tag(string tag, int p = 1)
+        public IActionResult Tag(string tag, int p = 1)
         {
             string type = "Tag";
             var listViewModel = new ListViewModel(blogRepository, type, tag, p);
@@ -45,7 +45,7 @@ namespace BlogWebsite.Controllers
             return View("List", listViewModel);
         }
 
-        public ViewResult Search(string s, int p = 1) //todo app.js not working
+        public IActionResult Search(string s, int p = 1) //todo app.js not working
         {
             string type = "Search";
             var listViewModel = new ListViewModel(blogRepository, type, s, p);
@@ -54,16 +54,17 @@ namespace BlogWebsite.Controllers
             return View("List", listViewModel);
         }
 
-        public ViewResult Post(int year, int month, string title)
+        public IActionResult Post(int year, int month, string title)
         {
             var post = blogRepository.GetPost(year, month, title);
             return View(post);
         }
 
-        public ViewResult Home()
+        public IActionResult Home(int p=1)
         {
             ViewBag.IsHome = true;
-            return View();
+            var posts = new ListViewModel(blogRepository, p);
+            return View(posts);
         }
     }
 }
