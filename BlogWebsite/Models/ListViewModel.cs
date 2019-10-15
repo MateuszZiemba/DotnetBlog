@@ -1,4 +1,4 @@
-﻿using BlogWebsite.Core.BusinessObjects;
+﻿using BlogWebsite.Core.Entities;
 using BlogWebsite.Core.Repositories;
 using System;
 using System.Collections.Generic;

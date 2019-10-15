@@ -1,5 +1,4 @@
-﻿using BlogWebsite.Core.BusinessObjects;
-using BlogWebsite.Core.POCOs;
+﻿using BlogWebsite.Core.Entities;
 using System.Collections.Generic;
 
 namespace BlogWebsite.Core.Repositories

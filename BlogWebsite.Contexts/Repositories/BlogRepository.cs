@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using BlogWebsite.Core.BusinessObjects;
+using BlogWebsite.Core.Entities;
 using BlogWebsite.Core.Contexts;
-using BlogWebsite.Core.POCOs;
 
 namespace BlogWebsite.Core.Repositories
 {
@@ -139,20 +139,19 @@ namespace BlogWebsite.Core.Repositories
 
         public IList<SocialMedia> GetAllSocialMedias()
         {
-            var socialMedias = new List<SocialMedia>(); //todo add to database and manage via AdminPage
-            socialMedias.Add(new SocialMedia("Facebook", "http://www.facebook.com"));
-            socialMedias.Add(new SocialMedia("Twitter", "http://www.twitter.com"));
-            socialMedias.Add(new SocialMedia("GitHub", "http://www.github.com"));
-            return socialMedias;
+            var socialMedias = new List<SocialMedia>(); //todo manage via AdminPage
+            return blogContext.SocialMedias.Where(s => s.IsEnabled).OrderBy(s => s.DisplayOrder).ToList();
         }
 
         public IList<string> GetArchiveCategories()
         {
-            var archives = new List<string>(); //todo get from database to get real results
-            archives.Add("October 2016");
-            archives.Add("January 2017");
-            archives.Add("June 2018");
-            return archives;
+            var result = blogContext.Posts.Select(p => new { p.PublishedOn.Year, p.PublishedOn.Month }).GroupBy(g => new { g.Year, g.Month }).Select(p => p.Key).ToList();
+            var archives = new List<string>();
+            foreach (var element in result)
+            {
+                archives.Add(String.Concat(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(element.Month), " ", element.Year)); //todo handle with selected culture
+            }
+            return archives; //todo return more complex type, with slug to search for those posts? 
         }
     }
 }

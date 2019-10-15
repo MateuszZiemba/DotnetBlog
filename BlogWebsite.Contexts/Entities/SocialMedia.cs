@@ -5,18 +5,17 @@ using System.Text;
 
 namespace BlogWebsite.Core.Entities
 {
-    public class Tag
+    public class SocialMedia
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(60)]
         public string Name { get; set; }
         [Required]
-        [StringLength(200)]
-        public string Description { get; set; }
-        [Required]
-        [StringLength(200)]
-        public string Slug { get; set; }
-        public virtual ICollection<Post> Posts { get; set; }
+        [StringLength(300)]
+        public string Url { get; set; }
+        public int DisplayOrder { get; set; }
+        public bool IsEnabled { get; set; }
+
     }
 }

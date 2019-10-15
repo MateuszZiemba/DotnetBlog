@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace BlogWebsite.Core.BusinessObjects
+namespace BlogWebsite.Core.Entities
 {
     public class Post
     {

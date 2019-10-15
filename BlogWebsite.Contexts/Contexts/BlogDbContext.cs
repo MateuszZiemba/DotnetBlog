@@ -1,4 +1,5 @@
-﻿using BlogWebsite.Core.BusinessObjects;
+﻿
+using BlogWebsite.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,5 +16,6 @@ namespace BlogWebsite.Core.Contexts
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }
