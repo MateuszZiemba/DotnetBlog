@@ -45,7 +45,14 @@
             </div>
         </header>
 
-        @await Component.InvokeAsync("Scroller", new {})
+        @await Component.InvokeAsync("Scroller", new { })
+
+        @if (ViewBag.IsHome != null && (bool)ViewBag.IsHome)
+        {
+            @*@Html.Partial("_Home")*@
+            <partial name="_Home" />
+        }
+
     </div>
 
     <main role="main" class="container">
@@ -57,10 +64,10 @@
 
                 @RenderBody()
 
-                <nav class="blog-pagination">
+                @*<nav class="blog-pagination">
                     <a class="btn btn-outline-primary" href="#">Older</a>
                     <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-                </nav>
+                </nav>*@
 
             </div><!-- /.blog-main -->
 

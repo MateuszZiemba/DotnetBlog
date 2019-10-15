@@ -39,37 +39,29 @@ namespace BlogWebsite.Controllers
         {
             string type = "Tag";
             var listViewModel = new ListViewModel(blogRepository, type, tag, p);
-            //if (listViewModel.Tag == null)
-            //    throw new HttpException(404, "Tag not found!");
 
             ViewBag.Title = String.Concat("Latest Posts from tag ", listViewModel.Tag.Name);
             return View("List", listViewModel);
         }
 
-        //public ViewResult Search(string s, int p = 1) //todo app.js not working
-        //{
-        //    string type = "Search";
-        //    var listViewModel = new ListViewModel(blogRepository, type, s, p);
+        public ViewResult Search(string s, int p = 1) //todo app.js not working
+        {
+            string type = "Search";
+            var listViewModel = new ListViewModel(blogRepository, type, s, p);
 
-        //    ViewBag.Title = String.Concat("List of posts found for ", s);
-        //    return View("List", listViewModel);
-        //}
+            ViewBag.Title = String.Concat("List of posts found for ", s);
+            return View("List", listViewModel);
+        }
 
         public ViewResult Post(int year, int month, string title)
         {
             var post = blogRepository.GetPost(year, month, title);
-            //var post = blogRepository.GetPost(2019, 10, "first");
-
-            //if (post == null)
-            //    throw new HttpException(404, "Post not found");
-
-            //if (post.IsPublished == false && User.Identity.IsAuthenticated == false)
-            //    throw new HttpException(401, "The post is not published");
             return View(post);
         }
 
         public ViewResult Home()
         {
+            ViewBag.IsHome = true;
             return View();
         }
     }
