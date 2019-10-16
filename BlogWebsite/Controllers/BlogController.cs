@@ -33,7 +33,7 @@ namespace BlogWebsite.Controllers
         public IActionResult Category(string category, int p = 1)
         {
             var posts = new ListViewModel(blogRepository, "Category", category, p);
-            return View();
+            return View("Posts", posts);
         }
 
         public IActionResult Tag(string tag, int p = 1)
@@ -42,7 +42,7 @@ namespace BlogWebsite.Controllers
             var listViewModel = new ListViewModel(blogRepository, type, tag, p);
 
             ViewBag.Title = String.Concat("Latest Posts from tag ", listViewModel.Tag.Name);
-            return View("List", listViewModel);
+            return View("Posts", listViewModel);
         }
 
         public IActionResult Search(string s, int p = 1) //todo app.js not working
@@ -51,7 +51,7 @@ namespace BlogWebsite.Controllers
             var listViewModel = new ListViewModel(blogRepository, type, s, p);
 
             ViewBag.Title = String.Concat("List of posts found for ", s);
-            return View("List", listViewModel);
+            return View("Posts", listViewModel);
         }
 
         public IActionResult Post(int year, int month, string title)
