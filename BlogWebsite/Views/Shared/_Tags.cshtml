@@ -1,11 +1,7 @@
 ﻿@model ICollection<BlogWebsite.Core.Entities.Tag>
         @foreach (var tag in Model)
         {
-            <div class="tags-div">
-                <span>
                     <a asp-action="tag"
                     asp-controller="blog"
                     asp-route-tag=@tag.Slug>@tag.Name</a>
-                <span>
-            </div>
         }

@@ -15,19 +15,14 @@
     </h2>
 
     @*<div class="row">*@
-    <p class="blog-post-meta">
-        @Model.PublishedOn @*by <a href="#">Mark</a>TODO add author and users*@
-        <div class="post-category">
-            <span>
-                Category: <a asp-action="category"
-                             asp-controller="blog"
-                             asp-route-category="@Model.Category.Slug">@Model.Category.Name</a>
-                        </span>
-                    </div>
-                    @*@Html.Partial("_Tags", Model.Tags)*@
-                    <!--</div>-->
-            @*</div>*@
-     </p>
+<p class="blog-post-meta">
+    @Model.PublishedOn, Category: <a asp-action="category"
+                                     asp-controller="blog"
+                                     asp-route-category="@Model.Category.Slug">@Model.Category.Name</a>, Tags: @Html.Partial("_Tags", Model.Tags)
+
+                                    @*Published on by <a href="#">Mark</a>TODO add author and users - and then category and tags on second line?*@
+
+                                </p>
 
         <p>
             @Model.Description
