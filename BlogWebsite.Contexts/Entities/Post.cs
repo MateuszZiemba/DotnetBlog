@@ -5,7 +5,10 @@ using System.Text;
 
 namespace BlogWebsite.Core.Entities
 {
-    public class Post
+    //todo add translations and multilanguage posts
+    //todo add disqus comments
+    //todo move all todos to trello
+    public class Post 
     {
         public int Id { get; set; }
         [Required]
