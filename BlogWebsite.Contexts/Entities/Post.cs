@@ -7,7 +7,6 @@ namespace BlogWebsite.Core.Entities
 {
     //todo add translations and multilanguage posts
     //todo add disqus comments
-    //todo move all todos to trello
     public class Post 
     {
         public int Id { get; set; }
@@ -27,6 +26,9 @@ namespace BlogWebsite.Core.Entities
         public bool IsPublished { get; set; }
         [Required]
         public DateTime CreatedOn { get; set; }
+        [DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMMM yyyy}")] this one displays month name
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime PublishedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
         [Required]

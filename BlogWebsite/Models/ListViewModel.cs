@@ -9,7 +9,7 @@ namespace BlogWebsite.Models
 {
     public class ListViewModel
     {
-        private int PageSize { get { return 15; } }
+        private int PageSize { get { return 5; } }
         public IList<Post> Posts { get; private set; }
         public int TotalPosts { get; private set; }
         public Category Category { get; private set; }
@@ -44,6 +44,12 @@ namespace BlogWebsite.Models
                 default:
                     break;
             }
+        }
+
+        public ListViewModel(IBlogRepository blogRepository, int year, int month, int pageNumber)
+        {
+            Posts = blogRepository.PostsForArchive(year, month, pageNumber, PageSize);
+            TotalPosts = blogRepository.PostsCountForArchive(year, month);
         }
     }
 }

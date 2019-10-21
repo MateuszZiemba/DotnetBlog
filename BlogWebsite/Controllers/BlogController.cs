@@ -30,6 +30,12 @@ namespace BlogWebsite.Controllers
             return View(posts);
         }
 
+        public IActionResult Post(int year, int month, string title)
+        {
+            var post = blogRepository.GetPost(year, month, title);
+            return View(post);
+        }
+
         public IActionResult Category(string category, int p = 1)
         {
             var posts = new ListViewModel(blogRepository, "Category", category, p);
@@ -54,10 +60,10 @@ namespace BlogWebsite.Controllers
             return View("Posts", listViewModel);
         }
 
-        public IActionResult Post(int year, int month, string title)
+        public IActionResult Archive(int year, int month, int p = 1)
         {
-            var post = blogRepository.GetPost(year, month, title);
-            return View(post);
+            var listViewModel = new ListViewModel(blogRepository, year, month, p);
+            return View("Posts", listViewModel);
         }
 
         public IActionResult Home(int p=1)

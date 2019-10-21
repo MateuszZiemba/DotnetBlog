@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using BlogWebsite.Core.Entities;
 using BlogWebsite.Core.Contexts;
+using BlogWebsite.Core.Helpers;
 
 namespace BlogWebsite.Core.Repositories
 {
@@ -119,6 +120,30 @@ namespace BlogWebsite.Core.Repositories
                     select p).Count();
         }
 
+        public IList<Post> PostsForArchive(int year, int month, int pageNumber, int pageSize)
+        {
+            var posts = blogContext.Posts.Where(p => p.IsPublished && p.PublishedOn.Year == year && p.PublishedOn.Month == month)
+                    .OrderByDescending(p => p.PublishedOn)
+                    //.Skip(pageNumber * pageSize)
+                    .Take(pageSize)
+                    .Include(p => p.Category)
+                    .ToList();
+
+            var postIds = posts.Select(p => p.Id).ToList();
+
+            return blogContext.Posts.Where(p => postIds.Contains(p.Id))
+                           .OrderByDescending(p => p.PublishedOn)
+                           .Include(p => p.Tags)
+                           .ToList();
+        }
+
+        public int PostsCountForArchive(int year, int month) //todo add latest posts as well? above the archive section? Latest, Social media & archive
+        {
+            return (from p in blogContext.Posts
+                    where p.IsPublished == true && p.PublishedOn.Year == year && p.PublishedOn.Month == month
+                    select p).Count();
+        }
+
         public Post GetPost(int year, int month, string postSlug)
         {
             return blogContext.Posts.Where(p => p.Slug.Equals(postSlug)
@@ -143,13 +168,14 @@ namespace BlogWebsite.Core.Repositories
             return blogContext.SocialMedias.Where(s => s.IsEnabled).OrderBy(s => s.DisplayOrder).ToList();
         }
 
-        public IList<string> GetArchiveCategories()
+        public IList<SidebarArchive> GetArchiveCategories()
         {
-            var result = blogContext.Posts.Select(p => new { p.PublishedOn.Year, p.PublishedOn.Month }).GroupBy(g => new { g.Year, g.Month }).Select(p => p.Key).ToList();
-            var archives = new List<string>();
-            foreach (var element in result)
+            var posts = blogContext.Posts.Select(p => new { p.PublishedOn.Year, p.PublishedOn.Month }).GroupBy(g => new { g.Year, g.Month }).Select(p => p.Key).ToList();
+            var archives = new List<SidebarArchive>();
+            foreach (var element in posts)
             {
-                archives.Add(String.Concat(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(element.Month), " ", element.Year)); //todo handle with selected culture
+                var sidebarArchive = new SidebarArchive(element.Year, element.Month);
+                archives.Add(sidebarArchive);
             }
             return archives; //todo return more complex type, with slug to search for those posts? 
         }

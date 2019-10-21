@@ -5,7 +5,9 @@
         {
             @foreach (var category in Model)
             {
-                <a class="p-2 text-muted" href="#">@category.Name</a> @*href - apply route & link to sort by category, implement Html.CategoryLink*@
+                <a class="p-2 text-muted" asp-action="category"
+                                           asp-controller="blog"
+                                           asp-route-category="@category.Slug">@category.Name</a>
             }
         }
     </nav>

@@ -115,18 +115,8 @@ link {
 }
 
 .blog-post-hyperlink {
-  color: black
+  color: #212529;
 }
-/*
-.post .post-category, .post-tags {
-    float: left;
-    margin-right: 10px;
-}
-
-.tags-div {
-    font-style: italic;
-    display: inline;
-}*/
 
 /*
  * Footer

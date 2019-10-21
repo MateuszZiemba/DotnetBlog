@@ -10,11 +10,15 @@
             @if (Model.ArchiveSections.Count > 0)
             {
                 <div class="p-4">
-                    <h4 class="font-italic">Archives</h4>
+                    <h4 class="font-italic">Archive</h4>
                     <ol class="list-unstyled mb-0">
                         @foreach (var archiveSection in Model.ArchiveSections)
                         {
-                            <li><a href="#">@archiveSection</a></li>
+                            <li><a asp-action="archive"
+                                   asp-controller="blog"
+                                   asp-route-year="@archiveSection.Year"
+                                   asp-route-month="@archiveSection.Month">@archiveSection.ArchiveSectionName</a>
+                            </li>
                         }
                     </ol>
                 </div>
@@ -23,7 +27,7 @@
             @if (Model.SocialMedias.Count > 0)
             {
                 <div class="p-4">
-                    <h4 class="font-italic">Elsewhere</h4>
+                    <h4 class="font-italic">Find me on</h4>
                     <ol class="list-unstyled">
                         @foreach (var socialMedia in Model.SocialMedias)
                         {

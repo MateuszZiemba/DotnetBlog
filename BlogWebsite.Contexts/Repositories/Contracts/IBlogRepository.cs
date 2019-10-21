@@ -15,10 +15,12 @@ namespace BlogWebsite.Core.Repositories
         Tag GetTag(string tagSlug);
         IList<Post> PostsForSearch(string search, int pageNumber, int pageSize);
         int PostsCountForSearch(string search);
+        IList<Post> PostsForArchive(int year, int month, int pageNumber, int pageSize);
+        int PostsCountForArchive(int year, int month);
         Post GetPost(int year, int month, string postSlug);
         IList<Category> GetAllCategories();
         IList<Tag> GetAllTags();
         IList<SocialMedia> GetAllSocialMedias();
-        IList<string> GetArchiveCategories();
+        IList<SidebarArchive> GetArchiveCategories();
     }
 }

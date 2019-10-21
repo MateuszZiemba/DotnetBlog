@@ -1,25 +1,19 @@
 ﻿@model BlogWebsite.Models.ListViewModel
-@*<main role="main" class="container">
-    <div class="row">
-        <div class="col-md-8 blog-main">*@
 
-            @if (Model.Posts.Count > 0)
-            {
-                foreach (var post in Model.Posts)
-                {
-                    @Html.Partial("_PostPreview", post)
-                }
-            }
-            else
-            {
-                <p>No posts found!</p>
-            }
+    <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Latest posts
+    </h3>
 
-            <nav class="blog-pagination">
-                <a class="btn btn-outline-primary" href="#">Older</a>
-                <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-            </nav>
+    @if (Model.Posts.Count > 0)
+    {
+        foreach (var post in Model.Posts)
+        {
+            @Html.Partial("_PostPreview", post)
+        }
+    }
+    else
+    {
+        <p>No posts found!</p>
+    }
 
-        @*</div>
-    </div>
-</main>*@
+@Html.Partial("_Pagination", Model.TotalPosts)
