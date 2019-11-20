@@ -15,11 +15,16 @@ namespace BlogWebsite.Models
         public Category Category { get; private set; }
         public Tag Tag { get; private set; }
         public string Search { get; private set; }
+        public int CurrentPage { get; private set; }
+        public bool ShowPrevious => CurrentPage < TotalPages;
+        public bool ShowNext => CurrentPage > 1;
+        public int TotalPages => (int)Math.Ceiling(decimal.Divide(TotalPosts, PageSize));
 
         public ListViewModel(IBlogRepository blogRepository, int pageNumber)
         {
             Posts = blogRepository.GetAllPosts(pageNumber - 1, PageSize);
             TotalPosts = blogRepository.PostsCount();
+            CurrentPage = pageNumber;
         }
 
         public ListViewModel(IBlogRepository blogRepository, string type, string text, int pageNumber)

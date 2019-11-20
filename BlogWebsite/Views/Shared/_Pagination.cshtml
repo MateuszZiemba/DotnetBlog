@@ -1,6 +1,24 @@
-﻿@* check current post number. if bigger than *@
+﻿@model BlogWebsite.Models.ListViewModel
 
-<nav class="blog-pagination">
-    <a class="btn btn-outline-primary" href="#">Older</a>
-    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-</nav>
+    <nav class="blog-pagination">
+        @if (Model.ShowPrevious)
+        {
+            <a class="btn btn-outline-primary" asp-action="posts"
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage + 1)">Older</a>
+        }
+        else
+        {
+            <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Older</a>
+        }
+        @if (Model.ShowNext)
+        {
+            <a class="btn btn-outline-primary" asp-action="posts"
+                                               asp-controller="blog"
+                                               asp-route-p="@(Model.CurrentPage - 1)">Newer</a>
+        }
+        else
+        {
+            <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+        }
+    </nav>

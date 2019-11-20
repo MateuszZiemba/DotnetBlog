@@ -6,14 +6,21 @@
 </head>
 <div class="blog-post">
     <h2 class="blog-post-title">@Model.Title</h2>
-    <p class="blog-post-meta">@Model.PublishedOn @*by <a href="#">Mark</a>TODO add author and users*@</p>
+    <p class="blog-post-meta">
+        @Html.DisplayFor(x => Model.PublishedOn)
 
-    @*<div class="post-body"> todo - add wrapper?
 
-     </div>*@
-    <p>
+
+        @*by <a href="#">Mark</a>TODO add author and users*@
+        @*<div class="post-body"> todo - add wrapper?
+
+        </div>*@
+<p>
         @Model.Text
     </p>
+
+    @Html.Partial("_DisqusComments")
+    <script id="dsq-count-scr" src="//mziemba.disqus.com/count.js" async></script></p>
 </div>
 
 
