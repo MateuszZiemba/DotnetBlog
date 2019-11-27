@@ -11,11 +11,13 @@ namespace BlogWebsite.Models
     {
         public IList<SidebarArchive> ArchiveSections { get; private set; }
         public IList<SocialMedia> SocialMedias { get; private set; }
+        public IList<Post> LatestPosts { get; private set; }
 
         public SidebarViewModel(IBlogRepository blogRepository)
         {
-            SocialMedias = blogRepository.GetAllSocialMedias();
+            LatestPosts = blogRepository.GetAllPosts(1, 5);
             ArchiveSections = blogRepository.GetArchiveCategories();
+            SocialMedias = blogRepository.GetAllSocialMedias();
         }
     }
 }

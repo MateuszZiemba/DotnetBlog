@@ -5,6 +5,25 @@
 
         @if (Model != null)
         {
+            @if (Model.LatestPosts.Count > 0)
+            {
+                <div class="p-4">
+                    <h4 class="font-italic">Latest Posts</h4>
+                    <ol class="list-unstyled mb-0">
+                        @foreach (var post in Model.LatestPosts)
+                        {
+                            <li>
+                                <a asp-action="post"
+                                   asp-controller="blog"
+                                   asp-route-year="@post.PublishedOn.Year"
+                                   asp-route-month="@post.PublishedOn.Month"
+                                   asp-route-title="@post.Slug">@post.Title</a>
+                            </li>
+                        }
+                    </ol>
+                </div>
+            }
+
             @if (Model.ArchiveSections.Count > 0)
             {
                 <div class="p-4">
@@ -12,7 +31,8 @@
                     <ol class="list-unstyled mb-0">
                         @foreach (var archiveSection in Model.ArchiveSections)
                         {
-                            <li><a asp-action="archive"
+                            <li>
+                                <a asp-action="archive"
                                    asp-controller="blog"
                                    asp-route-year="@archiveSection.Year"
                                    asp-route-month="@archiveSection.Month">@archiveSection.ArchiveSectionName</a>

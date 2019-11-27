@@ -5,8 +5,6 @@ using System.Text;
 
 namespace BlogWebsite.Core.Entities
 {
-    //todo add translations and multilanguage posts
-    //todo add disqus comments
     public class Post 
     {
         public int Id { get; set; }
@@ -34,5 +32,6 @@ namespace BlogWebsite.Core.Entities
         [Required]
         public Category Category { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
+        public Author Author { get; set; }
     }
 }
