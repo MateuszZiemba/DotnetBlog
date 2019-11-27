@@ -1,21 +1,20 @@
 ﻿@using Microsoft.AspNetCore.Http.Extensions
 @model BlogWebsite.Core.Entities.Post
 
-<p class="blog-post-meta">
-    @Html.DisplayFor(x => Model.PublishedOn),
-    @* here circural photo of author *@
-    
-    <a href="@string.Format("{0}#disqus_thread", @Context.Request.GetDisplayUrl())"></a>
-    Category: <a asp-action="category"
-                 asp-controller="blog"
-                 asp-route-category="@Model.Category.Slug">@Model.Category.Name</a>,
-                Tags: @Html.Partial("_Tags", Model.Tags)
-</p>
+    <p class="blog-post-meta">
+        @Html.DisplayFor(x => Model.PublishedOn),
+        @*<div class="float-left mr-1 mb-1">*@<img class="rounded-circle" 
+                                               alt="Author" 
+                                               src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" 
+                                               data-holder-rendered="true" 
+                                               height="24" @*20 was quite OK*@
+                                               width="24">@*</div>*@
+        @String.Concat(Model.Author.Name, " ", Model.Author.Surname)
+        <a href="@string.Format("{0}#disqus_thread", @Context.Request.GetDisplayUrl())"></a>
+        Category: <a asp-action="category"
+                     asp-controller="blog"
+                     asp-route-category="@Model.Category.Slug">@Model.Category.Name</a>,
+                    Tags: @Html.Partial("_Tags", Model.Tags)
+     </p>
 
-<script id="dsq-count-scr" src="//mziemba.disqus.com/count.js" async></script>
-
-
-
-            @*"p-2 text-muted"*@
-
-            @*Published on by <a href="#">Mark</a>TODO add author and users - and then category and tags on second line?*@                                                 
+<script id="dsq-count-scr" src="//mziemba.disqus.com/count.js" async></script>       

@@ -24,6 +24,7 @@ namespace BlogWebsite.Core.Repositories
                     .Skip(pageNumber * pageSize)
                     .Take(pageSize)
                     .Include(p => p.Category)
+                    .Include(p => p.Author)
                     .ToList();
 
             var postIds = posts.Select(p => p.Id).ToList();
@@ -47,6 +48,7 @@ namespace BlogWebsite.Core.Repositories
                                 .Skip(pageNumber * pageSize)
                                 .Take(pageSize)
                                 .Include(p => p.Category)
+                                .Include(p => p.Author)
                                 .ToList();
 
             var postIds = posts.Select(p => p.Id).ToList();
@@ -76,6 +78,7 @@ namespace BlogWebsite.Core.Repositories
                                 .Skip(pageNumber * pageSize)
                                 .Take(pageSize)
                                 .Include(p => p.Category)
+                                .Include(p => p.Author)
                                 .ToList();
 
             var postIds = posts.Select(p => p.Id).ToList();
@@ -103,6 +106,7 @@ namespace BlogWebsite.Core.Repositories
                     .Skip(pageNumber * pageSize)
                     .Take(pageSize)
                     .Include(p => p.Category)
+                    .Include(p => p.Author)
                     .ToList();
 
             var postIds = posts.Select(p => p.Id).ToList();
@@ -127,6 +131,7 @@ namespace BlogWebsite.Core.Repositories
                     //.Skip(pageNumber * pageSize)
                     .Take(pageSize)
                     .Include(p => p.Category)
+                    .Include(p => p.Author)
                     .ToList();
 
             var postIds = posts.Select(p => p.Id).ToList();
@@ -150,6 +155,7 @@ namespace BlogWebsite.Core.Repositories
                                && p.PublishedOn.Year.Equals(year)
                                && p.PublishedOn.Month.Equals(month))
                                .Include(c => c.Category)
+                               .Include(p => p.Author)
                                .FirstOrDefault();
         }
         public IList<Category> GetAllCategories()
@@ -177,7 +183,7 @@ namespace BlogWebsite.Core.Repositories
                 var sidebarArchive = new SidebarArchive(element.Year, element.Month);
                 archives.Add(sidebarArchive);
             }
-            return archives; //todo return more complex type, with slug to search for those posts? 
+            return archives;
         }
     }
 }

@@ -14,6 +14,9 @@
     <EmbeddedResource Update="Migrations\201910150924009_SocialMedia.resx">
       <DependentUpon>201910150924009_SocialMedia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Update="Migrations\201911271308570_PostEntryAuthor.resx">
+      <DependentUpon>201911271308570_PostEntryAuthor.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
