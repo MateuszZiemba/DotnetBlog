@@ -51,7 +51,7 @@ namespace BlogWebsite.Controllers
             return View("Posts", listViewModel);
         }
 
-        public IActionResult Search(string s, int p = 1) //todo app.js not working
+        public IActionResult Search(string s, int p = 1)
         {
             string type = "Search";
             var listViewModel = new ListViewModel(blogRepository, type, s, p);

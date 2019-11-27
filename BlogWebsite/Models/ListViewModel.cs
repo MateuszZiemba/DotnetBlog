@@ -35,16 +35,19 @@ namespace BlogWebsite.Models
                     Posts = blogRepository.PostsForTag(text, pageNumber - 1, PageSize);
                     TotalPosts = blogRepository.PostsCountForTag(text);
                     Tag = blogRepository.GetTag(text);
+                    CurrentPage = pageNumber;
                     break;
                 case "Category":
                     Posts = blogRepository.PostsForCategory(text, pageNumber - 1, PageSize);
                     TotalPosts = blogRepository.PostsCountForCategory(text);
                     Category = blogRepository.GetCategory(text);
+                    CurrentPage = pageNumber;
                     break;
                 case "Search":
                     Posts = blogRepository.PostsForSearch(text, pageNumber - 1, PageSize);
                     TotalPosts = blogRepository.PostsCountForSearch(text);
                     Search = text;
+                    CurrentPage = pageNumber;
                     break;
                 default:
                     break;
