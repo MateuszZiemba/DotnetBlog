@@ -4,6 +4,5 @@
 {
     <a asp-action="tag"
        asp-controller="blog"
-       asp-route-tag=@tag.Slug>@tag.Name</a>
-
+       asp-route-tag=@tag.Slug>@String.Concat("#", tag.Name)</a>
 }
