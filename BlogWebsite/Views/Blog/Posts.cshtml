@@ -1,19 +1,22 @@
-﻿@model BlogWebsite.Models.ListViewModel
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-    <h3 class="pb-4 mb-4 font-italic border-bottom">
-        Latest posts
-    </h3>
+@model BlogWebsite.Models.ListViewModel
 
-    @if (Model.Posts.Count > 0)
+<h3 class="pb-4 mb-4 font-italic border-bottom">
+    @Localizer["Latest posts"]
+</h3>
+
+@if (Model.Posts.Count > 0)
+{
+    foreach (var post in Model.Posts)
     {
-        foreach (var post in Model.Posts)
-        {
-            @Html.Partial("_PostPreview", post)
-        }
+        @Html.Partial("_PostPreview", post)
     }
-    else
-    {
-        <p>No posts found!</p>
-    }
+}
+else
+{
+    <p>@Localizer["No posts found!"]</p>
+}
 
 @Html.Partial("_Pagination", Model)

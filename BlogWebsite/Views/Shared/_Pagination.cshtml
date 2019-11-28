@@ -1,74 +1,78 @@
-﻿@model BlogWebsite.Models.ListViewModel
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-    <nav class="blog-pagination">
-        @if (Model.ShowPrevious)
-        {
-            @if (Model.Type.Equals("Posts"))
-            {
-                <a class="btn btn-outline-primary" asp-action=posts
-                   asp-controller="blog"
-                   asp-route-p="@(Model.CurrentPage + 1)">Older</a>
-            }
-            else if (Model.Type.Equals("Search"))
-            {
-                <a class="btn btn-outline-primary" asp-action=search
-                   asp-controller="blog"
-                   asp-route-p="@(Model.CurrentPage + 1)"
-                   asp-route-s="@Model.Search">Older</a>
-            }
-            else if (Model.Type.Equals("Category"))
-            {
-                <a class="btn btn-outline-primary" asp-action=category
-                   asp-controller="blog"
-                   asp-route-p="@(Model.CurrentPage + 1)"
-                   asp-route-category="@Model.Category.Slug">Older</a>
-            }
-            else if (Model.Type.Equals("Tag"))
-            {
-                <a class="btn btn-outline-primary" asp-action=tag
-                   asp-controller="blog"
-                   asp-route-p="@(Model.CurrentPage + 1)"
-                   asp-route-tag="@Model.Tag.Slug">Older</a>
-            }
-        }
-        else
-        {
-            <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Older</a>
-        }
+@model BlogWebsite.Models.ListViewModel
 
 
-        @if (Model.ShowNext)
+<nav class="blog-pagination">
+    @if (Model.ShowPrevious)
+    {
+        @if (Model.Type.Equals("Posts"))
         {
-            @if (Model.Type.Equals("Posts"))
-            {
-                <a class="btn btn-outline-primary" asp-action="posts"
-                   asp-controller="blog"
-                   asp-route-p="@(Model.CurrentPage - 1)">Newer</a>
-            }
-            else if (Model.Type.Equals("Search"))
-            {
-                <a class="btn btn-outline-primary" asp-action=search
-                   asp-controller="blog"
-                   asp-route-p="@(Model.CurrentPage - 1)"
-                   asp-route-s="@Model.Search">Newer</a>
-            }
-            else if (Model.Type.Equals("Category"))
-            {
-                <a class="btn btn-outline-primary" asp-action=category
-                   asp-controller="blog"
-                   asp-route-p="@(Model.CurrentPage - 1)"
-                   asp-route-category="@Model.Category.Slug">Newer</a>
-            }
-            else if (Model.Type.Equals("Tag"))
-            {
-                <a class="btn btn-outline-primary" asp-action=tag
-                   asp-controller="blog"
-                   asp-route-p="@(Model.CurrentPage - 1)"
-                   asp-route-tag="@Model.Tag.Slug">Newer</a>
-            }
+            <a class="btn btn-outline-primary" asp-action=posts
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage + 1)">@Localizer["Older"]</a>
         }
-        else
+        else if (Model.Type.Equals("Search"))
         {
-            <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+            <a class="btn btn-outline-primary" asp-action=search
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage + 1)"
+               asp-route-s="@Model.Search">@Localizer["Older"]</a>
         }
-    </nav>
+        else if (Model.Type.Equals("Category"))
+        {
+            <a class="btn btn-outline-primary" asp-action=category
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage + 1)"
+               asp-route-category="@Model.Category.Slug">@Localizer["Older"]</a>
+        }
+        else if (Model.Type.Equals("Tag"))
+        {
+            <a class="btn btn-outline-primary" asp-action=tag
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage + 1)"
+               asp-route-tag="@Model.Tag.Slug">@Localizer["Older"]</a>
+        }
+    }
+    else
+    {
+        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">@Localizer["Older"]</a>
+    }
+
+
+    @if (Model.ShowNext)
+    {
+        @if (Model.Type.Equals("Posts"))
+        {
+            <a class="btn btn-outline-primary" asp-action="posts"
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage - 1)">@Localizer["Newer"]</a>
+        }
+        else if (Model.Type.Equals("Search"))
+        {
+            <a class="btn btn-outline-primary" asp-action=search
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage - 1)"
+               asp-route-s="@Model.Search">@Localizer["Newer"]</a>
+        }
+        else if (Model.Type.Equals("Category"))
+        {
+            <a class="btn btn-outline-primary" asp-action=category
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage - 1)"
+               asp-route-category="@Model.Category.Slug">@Localizer["Newer"]</a>
+        }
+        else if (Model.Type.Equals("Tag"))
+        {
+            <a class="btn btn-outline-primary" asp-action=tag
+               asp-controller="blog"
+               asp-route-p="@(Model.CurrentPage - 1)"
+               asp-route-tag="@Model.Tag.Slug">@Localizer["Newer"]</a>
+        }
+    }
+    else
+    {
+        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">@Localizer["Newer"]</a>
+    }
+</nav>

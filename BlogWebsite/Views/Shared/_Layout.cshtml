@@ -1,9 +1,12 @@
-﻿<!doctype html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<!doctype html>
 <html lang="en">
 
 <link rel="stylesheet" type="text/css" href="//wpcc.io/lib/1.0.2/cookieconsent.min.css" />
 <script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
-<script>window.addEventListener("load", function(){window.wpcc.init({"border":"thin","corners":"normal","colors":{"popup":{"background":"#ffffff","text":"#000000","border":"#555555"},"button":{"background":"#555555","text":"#ffffff"}},"position":"bottom-right","content":{"href":"https://www.cookiesandyou.com/"}})});</script>
+<script>window.addEventListener("load", function () { window.wpcc.init({ "border": "thin", "corners": "normal", "colors": { "popup": { "background": "#ffffff", "text": "#000000", "border": "#555555" }, "button": { "background": "#555555", "text": "#ffffff" } }, "position": "bottom-right", "content": { "href": "https://www.cookiesandyou.com/" } }) });</script>
 
 <head>
     <meta charset="utf-8">
@@ -11,7 +14,7 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="~/css/blog.css" rel="stylesheet" />
-    <title>Blog Website</title>
+    <title>@Localizer["Website title"]</title>
 
     <style>
         .bd-placeholder-img {
