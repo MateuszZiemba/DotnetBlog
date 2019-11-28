@@ -1,6 +1,8 @@
-﻿<partial name="_JumbotronFeaturedPost">
+﻿
+
+@Html.Partial("_JumbotronFeaturedPost", Model)
 
     <div class="row mb-2">
-        <partial name="_FeaturedPost" />
-        <partial name="_FeaturedPost" />
+        @Html.Partial("_FeaturedPost", Model)
+        @Html.Partial("_FeaturedPost", Model)
     </div>
