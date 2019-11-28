@@ -128,7 +128,6 @@ namespace BlogWebsite.Core.Repositories
         {
             var posts = blogContext.Posts.Where(p => p.IsPublished && p.PublishedOn.Year == year && p.PublishedOn.Month == month)
                     .OrderByDescending(p => p.PublishedOn)
-                    //.Skip(pageNumber * pageSize)
                     .Take(pageSize)
                     .Include(p => p.Category)
                     .Include(p => p.Author)
@@ -142,7 +141,7 @@ namespace BlogWebsite.Core.Repositories
                            .ToList();
         }
 
-        public int PostsCountForArchive(int year, int month) //todo add latest posts as well? above the archive section? Latest, Social media & archive
+        public int PostsCountForArchive(int year, int month)
         {
             return (from p in blogContext.Posts
                     where p.IsPublished == true && p.PublishedOn.Year == year && p.PublishedOn.Month == month

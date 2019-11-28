@@ -12,6 +12,7 @@ namespace BlogWebsite.Models
         private int PageSize { get { return 5; } }
         public IList<Post> Posts { get; private set; }
         public int TotalPosts { get; private set; }
+        public string Type { get; private set; }
         public Category Category { get; private set; }
         public Tag Tag { get; private set; }
         public string Search { get; private set; }
@@ -25,6 +26,7 @@ namespace BlogWebsite.Models
             Posts = blogRepository.GetAllPosts(pageNumber - 1, PageSize);
             TotalPosts = blogRepository.PostsCount();
             CurrentPage = pageNumber;
+            Type = "Posts";
         }
 
         public ListViewModel(IBlogRepository blogRepository, string type, string text, int pageNumber)
@@ -36,18 +38,21 @@ namespace BlogWebsite.Models
                     TotalPosts = blogRepository.PostsCountForTag(text);
                     Tag = blogRepository.GetTag(text);
                     CurrentPage = pageNumber;
+                    Type = type;
                     break;
                 case "Category":
                     Posts = blogRepository.PostsForCategory(text, pageNumber - 1, PageSize);
                     TotalPosts = blogRepository.PostsCountForCategory(text);
                     Category = blogRepository.GetCategory(text);
                     CurrentPage = pageNumber;
+                    Type = type;
                     break;
                 case "Search":
                     Posts = blogRepository.PostsForSearch(text, pageNumber - 1, PageSize);
                     TotalPosts = blogRepository.PostsCountForSearch(text);
                     Search = text;
                     CurrentPage = pageNumber;
+                    Type = type;
                     break;
                 default:
                     break;
