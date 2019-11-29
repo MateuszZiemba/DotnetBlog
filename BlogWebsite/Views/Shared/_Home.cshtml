@@ -1,8 +1,8 @@
-﻿
+﻿@model BlogWebsite.Models.ListViewModel
+@*TODO to remove this structure*@
+@Html.Partial("_JumbotronFeaturedPost", @Model.JumbotronPost)
 
-@Html.Partial("_JumbotronFeaturedPost", Model)
-
-    <div class="row mb-2">
-        @Html.Partial("_FeaturedPost", Model)
-        @Html.Partial("_FeaturedPost", Model)
-    </div>
+<div class="row mb-2">
+    @Html.Partial("_FeaturedPost", @Model.FirstFeaturedPost)
+    @Html.Partial("_FeaturedPost", @Model.SecondFeaturedPost)
+</div>

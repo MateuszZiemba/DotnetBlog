@@ -7,6 +7,13 @@
     <div class="col-md-6 px-0">
         <h1 class="display-4 font-italic">@Model.Title</h1>
         <p class="lead my-3">@Model.Description</p>
-        <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">@Localizer["Continue reading..."]</a></p>
+        <p class="lead mb-0">
+            <a class="text-white font-weight-bold" asp-action="post"
+                                                   asp-controller="blog"
+                                                   asp-route-year="@Model.PublishedOn.Year"
+                                                   asp-route-month="@Model.PublishedOn.Month"
+                                                   asp-route-title="@Model.Slug">@Localizer["Continue reading..."]
+            </a>
+        </p>
     </div>
 </div>
