@@ -1,8 +1,5 @@
-﻿@model BlogWebsite.Models.ListViewModel
-@*TODO to remove this structure*@
-@Html.Partial("_JumbotronFeaturedPost", @Model.JumbotronPost)
-
-<div class="row mb-2">
-    @Html.Partial("_FeaturedPost", @Model.FirstFeaturedPost)
-    @Html.Partial("_FeaturedPost", @Model.SecondFeaturedPost)
-</div>
+﻿@await Component.InvokeAsync("FeaturedPostJumbotron", new { })
+    <div class="row mb-2">
+        @await Component.InvokeAsync("FeaturedPostBox", new { })
+        @await Component.InvokeAsync("FeaturedPostBox", new { })
+    </div>

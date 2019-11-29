@@ -39,8 +39,7 @@ namespace BlogWebsite
                 var supportedCultures = new[]
                 {
                     new CultureInfo("en-US"),
-                    new CultureInfo("pl"),
-                    new CultureInfo("fr")
+                    new CultureInfo("pl")
                  };
 
                 // State what the default culture for your application is. This will be used if no specific culture

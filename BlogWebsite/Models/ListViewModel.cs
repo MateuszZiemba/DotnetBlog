@@ -20,10 +20,6 @@ namespace BlogWebsite.Models
         public bool ShowPrevious => CurrentPage < TotalPages;
         public bool ShowNext => CurrentPage > 1;
         public int TotalPages => (int)Math.Ceiling(decimal.Divide(TotalPosts, PageSize));
-        //todo for test only
-        public Post JumbotronPost { get; private set; }
-        public Post FirstFeaturedPost { get; private set; }
-        public Post SecondFeaturedPost { get; private set; }
 
         public ListViewModel(IBlogRepository blogRepository, int pageNumber)
         {
@@ -31,11 +27,6 @@ namespace BlogWebsite.Models
             TotalPosts = blogRepository.PostsCount();
             CurrentPage = pageNumber;
             Type = "Posts";
-
-            //todo remove
-            JumbotronPost = Posts.First();
-            FirstFeaturedPost = Posts[1];
-            SecondFeaturedPost = Posts[2];
         }
 
         public ListViewModel(IBlogRepository blogRepository, string type, string text, int pageNumber)
